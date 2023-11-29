@@ -8,11 +8,11 @@
 // so prod mein yehi chote chote packages ka hi farak hota hai
 // there are many places to deploy digitalOcean,seenode,render,cyclic,aws
 // so pehle git pe daalna hoga and from there we will pick and deploy
-
+// production se daro mat aapka koi ab tak user nahi kon 
 
 
 require('dotenv').config()
-const express =require('express');
+const express = require('express');
 const app=express();
 const port=3000
 app.get('/',(req,res)=>{
