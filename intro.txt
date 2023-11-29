@@ -1,0 +1,94 @@
+lec 1
+backend apne aap mein ek tech hai 
+servers mein software jo serve kar raha hai
+server sirf ek software hai
+2 Major Component -> 1 programming language and 1 database
+nodejs ka backend development se itna kuch lena dena nahi hai
+node js(js ka runtime samajhne ka koshish mein kar raha hu)
+aaj kal js stand alone nahi chalti isliye it is possible to do backend using js language
+javascript mein spring wagera
+php mein laraval wagera
+programming language -> for business logic
+db->data process karenge usko verify,analyze karenge and agar koi query pucha to wapas se frontend mein dedenge
+kam sirf itna hi hai ke data leke store karna and data manga tab retrieve karke dena
+database -> mongo,mysql,postgres,sqlite
+mongoose,express ye sab ease of use ho isliye ham use karte haiwaise hi db se interact karte hai waise tabhi
+ham orm,odm use karenge like prisma,mongoose
+direct interaction nahi hoga but ek tarah ka framework ya module hai jisse kaam asaan hojayega
+db is always in other continent
+yahape ham sirf alag alag functions hi likhenge and ye function db se interact karenge and ham response
+mein ek api value return karenge api bhi ek return value hoti hai jo zyadatar json mein hota hai
+express -> routing 
+mongoose -> database banane ke liye
+three things are only possible while communicating or handling
+1.data  2.file  3.3rd party apis
+src -> major thing works here
+index -> aapki app ka entry point 
+usually ham jaise hi application start hui to ham chahte hai ki db connect hojaye to uskeliye db connection in index file
+App -> configuration,cookies
+constants -> very important files
+baate han request response ki api ke through karte hai
+file structure
+1st directory we will made is DB  -> sirf db calls
+2nd model(schema)/structure/sample  -> kiss tarah se data store hoga/uska schema structure store karte hai
+3rd controllers(function)mvc  -> ye sirf functions hi hote hai
+4th routes -> /signup /login /{controller} /ke baad konse controller pe jaye wo decide karte hai
+5th middleware
+6th utils(multiple times we use email) -> koi bhi aizi chiz jo ham baar baar karna chahte hai
+
+lec 2
+request response ka kaam karta hai express koi na koi constanly listen karta hona chahiye
+/ ->home route
+/login -> login setup 
+koi na koi to hona chahiye jo listen karta ho to so ye sunne ka kaam express karta hai
+request bhi bohot tarah ki hoti hai "Get" (sabse basic) browser ke andar ham koi bhi query puchte hai for eg
+server listen karega par hava mein to nahi karega to kuch free ports hote hau
+const app=express() express ki saari powers hamne app mein dedi
+deployment
+
+
+
+
+
+kya store karne wale hai wo first check karo(like username,email-id,password)
+dont run into database 
+to store data there are some professional tools as well as some basic tools 
+knowing the approach is very necessary
+we will use mongoose
+first question is data kha store karna hai and kya store karna hai
+moon modeler is a data modelling tool which is majorly used nowadays(very much compatible with mongoose
+generates code on the basis of the design we make)
+eraser.io
+we firstly work on registration page (pehle requirements fix rakhlo kyuki ek chota sa change 
+bhi bohot issues create karega)
+login mein ham kuch alag nahi karte hai sirf validation hi karte hai koi nayi entries thodiu na aati hai
+jo values already during registration ke time pe li thi usko validation ka hi to kam karte hai
+so pehle registration pe kaam karo pen and paper leke saare requirements set karlo and then think of login page
+sabse pehle chinita kijiye kitne fields hai,konse fields hai and kya kya fields aur lene wale hai users sa
+data store karne mein help karte hai(mongoose,prisma) -> they are use for doing data modelling
+
+database mein (mongodb) mein jab wo store hota hai tab wo sabkuch lowercase mein and plural form mein store karta hai
+"Todo" -> (in database) "todos"
+this 3 lines will always be used in mongoose
+in the first line we import the mongoose(import mongoose from "mongoose")
+
+mongoose helps us to create schema(in the second line we create schema)
+we always make schema using new keyword and it has method schema which takes one object as parameter
+and we store this schema in a variable (const userSchema=new mongoose.Schema({}))
+jab tak ye export nahi hoga tab tak ye schema nahi banayega
+
+kya export karna hai ek user and ye mongoose ka schema hai and isko export karne ka ek tarika hai
+export const User=mongoose.model("User",userSchema)
+ye model do parameters leta hai (kya model banau and kiske base pe banau)
+model ka name ham string mein denge and kis basis pe banau wo line 2 mein mention already kiya hai
+
+timestamps -> created at,updated at
+
+initially check which fields are not dependent at all
+category ke andar kuch na kuch to aayega hi so ham pehle category design karenge
+ye soch ke order mein karna zaruri hai nahi to baad mein bohot saare changes karne pad sakte hai
+mongoose internally find kar leta hai ki vo plural hai ki nahi
+but when we give reference to different models to categories se better Category hota hai kyuki wo standard practice hai
+object mein order matter nahi karta hai but array mein matter karta hai
+mongodb is v.strong db ham buffer ke form mein bhi img store kar sakte hai but rakhni nahi chahiye wo db ko bohot 
+heavy kar deti hai so wo aapke khudike server pe ek alag folder ke andar and uss folder ka public url hamse liya jata hai
